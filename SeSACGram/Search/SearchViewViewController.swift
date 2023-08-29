@@ -7,11 +7,17 @@
 
 import UIKit
 
+protocol PassselectedImageProtocol {
+    func passImageString(image: String)
+}
+
 class SearchViewViewController: BaseViewController {
 
     let mainView = SearchView()
     
     let imageList = ["pencil", "star", "person", "star.fill", "xmark", "person.circle"]
+    
+    var delegate: PassselectedImageProtocol?
     
     override func loadView() {
         self.view = mainView
@@ -56,7 +62,12 @@ extension SearchViewViewController: UICollectionViewDelegate, UICollectionViewDa
         
         print(imageList[indexPath.item])
         
-        NotificationCenter.default.post(name: NSNotification.Name("SelectImage"), object: nil, userInfo: ["name": imageList[indexPath.item], "sample": "고래밥"])
+        //Notification을 통한 값 전달
+//        NotificationCenter.default.post(name: NSNotification.Name("SelectImage"), object: nil, userInfo: ["name": imageList[indexPath.item], "sample": "고래밥"])
+        
+        //delegate를 통한 값 전달
+        delegate?.passImageString(image: imageList[indexPath.item])
+        
         dismiss(animated: true)
     }
     
