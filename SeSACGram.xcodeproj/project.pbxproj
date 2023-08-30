@@ -28,7 +28,9 @@
 		DE45D61C2A9D9BB600F44BD1 /* SeSACFrameWork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DE45D6182A9D9B5300F44BD1 /* SeSACFrameWork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DE45D61F2A9DB57500F44BD1 /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE45D61E2A9DB57500F44BD1 /* TitleViewController.swift */; };
 		DE45D6212A9DC12900F44BD1 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE45D6202A9DC12900F44BD1 /* ContentViewController.swift */; };
-		DE45D6232A9DC79700F44BD1 /* MapViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE45D6222A9DC79700F44BD1 /* MapViewControl.swift */; };
+		DE45D6232A9DC79700F44BD1 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE45D6222A9DC79700F44BD1 /* WebViewController.swift */; };
+		DE45D63D2A9EDBB400F44BD1 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE45D63C2A9EDBB400F44BD1 /* APIService.swift */; };
+		DE45D6402A9EEBE400F44BD1 /* URLSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE45D63F2A9EEBE400F44BD1 /* URLSessionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,7 +86,9 @@
 		DE45D6122A9D9B5300F44BD1 /* SeSACFrameWork.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SeSACFrameWork.xcodeproj; path = ../SeSACFrameWork/SeSACFrameWork.xcodeproj; sourceTree = "<group>"; };
 		DE45D61E2A9DB57500F44BD1 /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
 		DE45D6202A9DC12900F44BD1 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
-		DE45D6222A9DC79700F44BD1 /* MapViewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControl.swift; sourceTree = "<group>"; };
+		DE45D6222A9DC79700F44BD1 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		DE45D63C2A9EDBB400F44BD1 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		DE45D63F2A9EEBE400F44BD1 /* URLSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,7 @@
 		DE45D5AC2A9C1D7400F44BD1 /* SeSACGram */ = {
 			isa = PBXGroup;
 			children = (
+				DE45D63E2A9EEBC900F44BD1 /* Network */,
 				DE45D5E02A9D7BBF00F44BD1 /* Extension */,
 				DE45D5CC2A9C2FD400F44BD1 /* Add */,
 				DE45D5C72A9C272500F44BD1 /* Search */,
@@ -162,7 +167,7 @@
 				DE45D5E52A9D7DC200F44BD1 /* DateViewController.swift */,
 				DE45D61E2A9DB57500F44BD1 /* TitleViewController.swift */,
 				DE45D6202A9DC12900F44BD1 /* ContentViewController.swift */,
-				DE45D6222A9DC79700F44BD1 /* MapViewControl.swift */,
+				DE45D6222A9DC79700F44BD1 /* WebViewController.swift */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -191,6 +196,15 @@
 				DE45D61A2A9D9B5300F44BD1 /* SeSACFrameWorkTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		DE45D63E2A9EEBC900F44BD1 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				DE45D63C2A9EDBB400F44BD1 /* APIService.swift */,
+				DE45D63F2A9EEBE400F44BD1 /* URLSessionViewController.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,12 +317,14 @@
 				DE45D5E62A9D7DC200F44BD1 /* DateViewController.swift in Sources */,
 				DE45D5AE2A9C1D7400F44BD1 /* AppDelegate.swift in Sources */,
 				DE45D5E42A9D7C8500F44BD1 /* DateView.swift in Sources */,
+				DE45D6402A9EEBE400F44BD1 /* URLSessionViewController.swift in Sources */,
 				DE45D5D02A9C337300F44BD1 /* SearchView.swift in Sources */,
-				DE45D6232A9DC79700F44BD1 /* MapViewControl.swift in Sources */,
+				DE45D6232A9DC79700F44BD1 /* WebViewController.swift in Sources */,
 				DE45D5CB2A9C2EDF00F44BD1 /* BaseView.swift in Sources */,
 				DE45D5B02A9C1D7400F44BD1 /* SceneDelegate.swift in Sources */,
 				DE45D5C92A9C278C00F44BD1 /* SearchViewViewController.swift in Sources */,
 				DE45D5E22A9D7BE000F44BD1 /* Extension+NSNotification.swift in Sources */,
+				DE45D63D2A9EDBB400F44BD1 /* APIService.swift in Sources */,
 				DE45D61F2A9DB57500F44BD1 /* TitleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

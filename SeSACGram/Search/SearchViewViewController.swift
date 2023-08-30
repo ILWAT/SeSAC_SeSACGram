@@ -28,6 +28,11 @@ class SearchViewViewController: BaseViewController {
         
         //addObserver보다 post가 먼저 신호를 보내면 addObserver가 신호를 받지 못한다!
         NotificationCenter.default.addObserver(self, selector: #selector(recommandKeywordNotificationObserver(notification:)), name: NSNotification.Name("RecommandKeyword"), object: nil)
+        
+        //Asks UIKit to make this object the first responder in its window.
+        //서치바가 있는 뷰가 뜨면 커서와 키보드가 등장
+        mainView.searchBar.becomeFirstResponder()
+        mainView.searchBar.delegate = self
     }
     
     override func configureView() {
@@ -42,6 +47,13 @@ class SearchViewViewController: BaseViewController {
         print("recommandKeywordNotificationObserver")
     }
     
+}
+
+extension SearchViewViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
+        
+        mainView.searchBar.resignFirstResponder()
+    }
 }
 
 

@@ -31,6 +31,8 @@ class AddViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(selectImageNotificationObserver), name: NSNotification.Name("SelectImage"), object: nil)
         
 //        override sesacShowAlert(title: <#T##String#>, message: <#T##String#>, buttonTitle: <#T##String#>)
+        
+        APIService.shared.callRequest()
     }
     
     //viewWillAppear에 addObserver가 불필요하게 Observer 등록이 이루어짐(Push와 같은 viewWillAppear가 계속 이루어지는 상황에는 Observer가 쌓임)
