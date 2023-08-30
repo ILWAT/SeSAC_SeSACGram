@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol PassselectedImageProtocol {
     func passImageString(image: String)
@@ -16,6 +17,7 @@ class SearchViewViewController: BaseViewController {
     let mainView = SearchView()
     
     let imageList = ["pencil", "star", "person", "star.fill", "xmark", "person.circle"]
+    var imageURLArray: [String] = []
     
     var delegate: PassselectedImageProtocol?
     
@@ -51,22 +53,35 @@ class SearchViewViewController: BaseViewController {
 
 extension SearchViewViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
-        
+        //키보드 다운시키는 방법중 하나인 UISearchBar의 resignFirstResponder() 사용
         mainView.searchBar.resignFirstResponder()
+        
+        imageURLArray.removeAll()
+        
+        guard let inputText = mainView.searchBar.text else {return}
+        
+        APIService.shared.unsplashSearchImage(text: inputText) { reslut in
+            DispatchQueue.global().async {
+                for item in reslut.results{
+                    self.imageURLArray.append(item.urls.full)
+                }
+                self.mainView.collectionView.reloadData()
+            }
+        }
     }
 }
 
 
 extension SearchViewViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageList.count
+        return imageURLArray.count // imageList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCollectionViewCell", for: indexPath) as? SearchCollectionViewCell else {return UICollectionViewCell() }
         
-        cell.imageView.image = UIImage(systemName: imageList[indexPath.item])
-        
+//        cell.imageView.image = UIImage(systemName: imageList[indexPath.item])
+        cell.imageView.kf.setImage(with: URL(string: imageURLArray[indexPath.item]))
         return cell
     }
     
@@ -78,7 +93,8 @@ extension SearchViewViewController: UICollectionViewDelegate, UICollectionViewDa
 //        NotificationCenter.default.post(name: NSNotification.Name("SelectImage"), object: nil, userInfo: ["name": imageList[indexPath.item], "sample": "고래밥"])
         
         //delegate를 통한 값 전달
-        delegate?.passImageString(image: imageList[indexPath.item])
+//        delegate?.passImageString(image: imageList[indexPath.item])
+        delegate?.passImageString(image: imageURLArray[indexPath.item])
         
         dismiss(animated: true)
     }

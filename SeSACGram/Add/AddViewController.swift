@@ -7,6 +7,7 @@
 
 import UIKit
 import SeSACFrameWork
+import PhotosUI
 
 //Protocol 값 전달 1.
 protocol PassDateDelegate {
@@ -84,9 +85,26 @@ class AddViewController: BaseViewController {
         
         let word = ["Apple", "Banana", "Cookie", "Cake", "Sky"]
         
+        //post가 옵저버를 추가하기 전에 일어났던 일이기 때문에 발생했던 일은 신호를 받지 못한다.
 //        NotificationCenter.default.post(name: NSNotification.Name("RecommandKeyword"), object: nil, userInfo: ["word": word.randomElement()!])
         
-        present(SearchViewViewController(), animated: true) //post가 옵저버를 추가하기 전에 일어났던 일이기 때문에 발생했던 일은 신호를 받지 못한다.
+        let actionSheet = UIAlertController(title: "사진 가져오기 선택", message: nil, preferredStyle: .actionSheet)
+        let gallery = UIAlertAction(title: "갤러리에서 가져오기", style: .default) { _ in
+            print("PHPicker사용하기")
+            let pickerView = PHPickerViewController(configuration: PHPickerConfiguration(photoLibrary: .shared()))
+            pickerView.delegate = self
+            self.present(pickerView, animated: true)
+        }
+        let fromWeb = UIAlertAction(title: "웹에서 검색하기", style: .default) { _ in
+            self.present(SearchViewViewController(), animated: true)
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        actionSheet.addAction(gallery)
+        actionSheet.addAction(fromWeb)
+        actionSheet.addAction(cancel)
+        
+        self.present(actionSheet, animated: true)
+        
     }
     
     @objc func dateButtonClicked(_ sender: UIButton){
@@ -94,7 +112,8 @@ class AddViewController: BaseViewController {
         //Protocol 값 전달 5.
         let vc = DateViewController()
         vc.delegate = self
-        navigationController?.pushViewController(vc, animated: true)
+        self.navigationController?.pushViewController(vc, animated: true)
+        //과제 코드
     }
     
     @objc func searchProtocolButtonClicked(_ sender: UIButton) {
@@ -142,3 +161,19 @@ extension AddViewController: PassselectedImageProtocol{
     }
 }
 
+
+extension AddViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        //일단 선택했으니까 화면을 닫자
+        dismiss(animated: true)
+        if let itemProvider = results.first?.itemProvider {
+            if itemProvider.canLoadObject(ofClass: UIImage.self){
+                itemProvider.loadObject(ofClass: UIImage.self) { images, error in
+                    DispatchQueue.main.async {
+                        self.mainView.photoImageView.image = images as? UIImage
+                    }
+                }
+            }
+        }
+    }
+}
