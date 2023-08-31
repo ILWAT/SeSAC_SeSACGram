@@ -29,9 +29,8 @@ class AddViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //notification을 활용한 선택 사진 값 받기 (Observer)
         NotificationCenter.default.addObserver(self, selector: #selector(selectImageNotificationObserver), name: NSNotification.Name("SelectImage"), object: nil)
-        
-//        override sesacShowAlert(title: <#T##String#>, message: <#T##String#>, buttonTitle: <#T##String#>)
         
         APIService.shared.callRequest()
     }
@@ -41,9 +40,9 @@ class AddViewController: BaseViewController {
         super.viewWillAppear(animated)
         print(#function)
         
-        
 //        NotificationCenter.default.addObserver(self, selector: #selector(selectImageNotificationObserver), name: NSNotification.Name.selectedImage, object: nil)
     }
+    
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -52,10 +51,12 @@ class AddViewController: BaseViewController {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.selectedImage, object: nil)
     }
     
-
     
+    deinit {
+        print("deinit", self)
+    }
     
-    //MARK: - setupUI
+    //MARK: - settingUI
     override func configureView() {
         super.configureView()
         
@@ -110,10 +111,12 @@ class AddViewController: BaseViewController {
     @objc func dateButtonClicked(_ sender: UIButton){
         
         //Protocol 값 전달 5.
-        let vc = DateViewController()
-        vc.delegate = self
+//        let vc = DateViewController()
+//        vc.delegate = self
+        
+        let vc = HomeViewController()
         self.navigationController?.pushViewController(vc, animated: true)
-        //과제 코드
+        
     }
     
     @objc func searchProtocolButtonClicked(_ sender: UIButton) {

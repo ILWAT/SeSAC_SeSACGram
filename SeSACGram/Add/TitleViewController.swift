@@ -8,6 +8,7 @@
 import UIKit
 
 class TitleViewController: BaseViewController {
+    //MARK: - Properties
     let textField = {
         let view = UITextField()
         view.placeholder = "제목을 입력해주세요."
@@ -17,6 +18,11 @@ class TitleViewController: BaseViewController {
     //Closure 값 전달 - 1
     var completionHandler: ((String) -> Void)?
     
+    deinit {
+        print("deinit", self)
+    }
+    
+    //MARK: - LifeCycle
     override func configureView() {
         super.configureView()
         view.backgroundColor = .white
@@ -40,6 +46,8 @@ class TitleViewController: BaseViewController {
 //        completionHandler?(inputText)
 //    }
     
+    
+    //MARK: - Helper
     @objc func doneButtonClicked(_ sender: UIButton){
         guard let inputText = textField.text else {return}
         //Clousure - 2

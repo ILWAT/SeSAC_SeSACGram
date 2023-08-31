@@ -38,6 +38,8 @@
 		DE45D64B2A9F810600F44BD1 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE45D64A2A9F810600F44BD1 /* APIKeys.swift */; };
 		DE45D64E2A9F821900F44BD1 /* UnsplashSearchPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE45D64D2A9F821900F44BD1 /* UnsplashSearchPhoto.swift */; };
 		DE45D6512A9F85A600F44BD1 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DE45D6502A9F85A600F44BD1 /* Kingfisher */; };
+		DE45D6542AA01A7400F44BD1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE45D6532AA01A7400F44BD1 /* HomeViewController.swift */; };
+		DE45D6562AA01A8500F44BD1 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE45D6552AA01A8500F44BD1 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +103,8 @@
 		DE45D6482A9F80EC00F44BD1 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		DE45D64A2A9F810600F44BD1 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		DE45D64D2A9F821900F44BD1 /* UnsplashSearchPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashSearchPhoto.swift; sourceTree = "<group>"; };
+		DE45D6532AA01A7400F44BD1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		DE45D6552AA01A8500F44BD1 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +143,7 @@
 		DE45D5AC2A9C1D7400F44BD1 /* SeSACGram */ = {
 			isa = PBXGroup;
 			children = (
+				DE45D6522AA01A5900F44BD1 /* Home */,
 				DE45D64C2A9F81BE00F44BD1 /* Data */,
 				DE45D63E2A9EEBC900F44BD1 /* Network */,
 				DE45D5E02A9D7BBF00F44BD1 /* Extension */,
@@ -232,6 +237,15 @@
 				DE45D64D2A9F821900F44BD1 /* UnsplashSearchPhoto.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		DE45D6522AA01A5900F44BD1 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				DE45D6532AA01A7400F44BD1 /* HomeViewController.swift */,
+				DE45D6552AA01A8500F44BD1 /* HomeView.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,6 +356,7 @@
 				DE45D64B2A9F810600F44BD1 /* APIKeys.swift in Sources */,
 				DE45D6212A9DC12900F44BD1 /* ContentViewController.swift in Sources */,
 				DE45D5CE2A9C2FF200F44BD1 /* AddView.swift in Sources */,
+				DE45D6562AA01A8500F44BD1 /* HomeView.swift in Sources */,
 				DE45D64E2A9F821900F44BD1 /* UnsplashSearchPhoto.swift in Sources */,
 				DE45D5D62A9C380F00F44BD1 /* SearchCollectionViewCell.swift in Sources */,
 				DE45D5B22A9C1D7400F44BD1 /* AddViewController.swift in Sources */,
@@ -350,6 +365,7 @@
 				DE45D5C62A9C242B00F44BD1 /* BaseViewController.swift in Sources */,
 				DE45D6472A9F795E00F44BD1 /* EndPoint.swift in Sources */,
 				DE45D5E62A9D7DC200F44BD1 /* DateViewController.swift in Sources */,
+				DE45D6542AA01A7400F44BD1 /* HomeViewController.swift in Sources */,
 				DE45D5AE2A9C1D7400F44BD1 /* AppDelegate.swift in Sources */,
 				DE45D5E42A9D7C8500F44BD1 /* DateView.swift in Sources */,
 				DE45D6402A9EEBE400F44BD1 /* URLSessionViewController.swift in Sources */,

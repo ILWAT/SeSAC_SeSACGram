@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-protocol PassselectedImageProtocol {
+protocol PassselectedImageProtocol: AnyObject {
     func passImageString(image: String)
 }
 
@@ -19,7 +19,7 @@ class SearchViewViewController: BaseViewController {
     let imageList = ["pencil", "star", "person", "star.fill", "xmark", "person.circle"]
     var imageURLArray: [String] = []
     
-    var delegate: PassselectedImageProtocol?
+    weak var delegate: PassselectedImageProtocol?
     
     override func loadView() {
         self.view = mainView
@@ -35,6 +35,10 @@ class SearchViewViewController: BaseViewController {
         //서치바가 있는 뷰가 뜨면 커서와 키보드가 등장
         mainView.searchBar.becomeFirstResponder()
         mainView.searchBar.delegate = self
+    }
+    
+    deinit {
+        print("deinit", self)
     }
     
     override func configureView() {

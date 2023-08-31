@@ -28,8 +28,6 @@ class URLSessionViewController: UIViewController{
 
 
 extension URLSessionViewController: URLSessionDataDelegate {
-    
-    
     //서버에서 최초로 응답 받은 경우에 호출(상태코드 처리)
 //    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive response: URLResponse) async -> URLSession.ResponseDisposition {
 //        print("RESPONSE", response)
