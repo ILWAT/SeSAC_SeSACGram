@@ -8,6 +8,7 @@
 import UIKit
 import SeSACFrameWork
 import PhotosUI
+import Kingfisher
 
 //Protocol 값 전달 1.
 protocol PassDateDelegate {
@@ -97,7 +98,9 @@ class AddViewController: BaseViewController {
             self.present(pickerView, animated: true)
         }
         let fromWeb = UIAlertAction(title: "웹에서 검색하기", style: .default) { _ in
-            self.present(SearchViewViewController(), animated: true)
+            let searchVC = SearchViewViewController()
+            searchVC.delegate = self
+            self.present(searchVC, animated: true)
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         actionSheet.addAction(gallery)
@@ -160,7 +163,8 @@ extension AddViewController: PassDateDelegate{
 
 extension AddViewController: PassselectedImageProtocol{
     func passImageString(image: String) {
-        mainView.photoImageView.image = UIImage(systemName: image)
+        let url = URL(string: image)
+        mainView.photoImageView.kf.setImage(with: url!)
     }
 }
 

@@ -69,7 +69,9 @@ extension SearchViewViewController: UISearchBarDelegate {
                 for item in reslut.results{
                     self.imageURLArray.append(item.urls.full)
                 }
-                self.mainView.collectionView.reloadData()
+                DispatchQueue.main.async {
+                    self.mainView.collectionView.reloadData()
+                }
             }
         }
     }
@@ -90,8 +92,8 @@ extension SearchViewViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        print(imageList[indexPath.item])
+        print(indexPath.item)
+        print(imageURLArray[indexPath.item])
         
         //Notification을 통한 값 전달
 //        NotificationCenter.default.post(name: NSNotification.Name("SelectImage"), object: nil, userInfo: ["name": imageList[indexPath.item], "sample": "고래밥"])
